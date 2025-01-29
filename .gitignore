@@ -1,0 +1,7 @@
+# Ignoriere den .idea-Ordner (von JetBrains IDEs wie PyCharm)
+.idea/
+
+# Ignoriere .DS_Store-Dateien (von macOS)
+.DS_Store
+
+**/__pycache__/

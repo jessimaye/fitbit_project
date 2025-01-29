@@ -1,0 +1,7 @@
+flask
+requests
+requests-oauthlib
+gunicorn
+flask-sqlalchemy
+flask-migrate
+psycopg2-binary
