@@ -3,6 +3,7 @@ from flask import Flask, redirect, request, session, url_for
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from requests_oauthlib import OAuth2Session
+from flask_session import Session
 
 # Flask-Konfiguration
 app = Flask(__name__)
@@ -25,6 +26,14 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # SQLAlchemy & Migrations-Setup
 db = SQLAlchemy(app)
+
+# Flask-Session-Konfiguration
+app.config['SESSION_TYPE'] = 'filesystem'  # Oder 'sqlalchemy' für DB-Sessions
+app.config['SESSION_PERMANENT'] = False
+app.config['SESSION_USE_SIGNER'] = True
+app.config['SESSION_FILE_DIR'] = './flask_session/'  # Falls 'filesystem' genutzt wird
+
+Session(app)
 
 # Datenbankmodell für Tokens
 
