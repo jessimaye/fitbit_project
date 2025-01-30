@@ -8,7 +8,7 @@ from datetime import datetime
 
 # Flask-Konfiguration
 app = Flask(__name__)
-app.secret_key = os.urandom(24)
+app.secret_key = os.environ.get("SECRET_KEY", "fallback_secret_key")
 
 # Fitbit API-Konfiguration
 CLIENT_ID = os.environ.get("CLIENT_ID")
