@@ -4,6 +4,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from requests_oauthlib import OAuth2Session
 from flask_session import Session
+from datetime import datetime
 
 # Flask-Konfiguration
 app = Flask(__name__)
@@ -84,7 +85,7 @@ def save_token_to_db(token):
         access_token=token.get('access_token'),
         refresh_token=token.get('refresh_token'),
         scope=','.join(token.get('scope',[])),
-        expires_at=token.get('expires_at')
+        expires_at=datetime.utcfromtimestamp(token.get('expires_at'))
     )
 
     db.session.add(new_token)
